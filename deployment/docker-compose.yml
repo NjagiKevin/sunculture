@@ -1,0 +1,10 @@
+services:
+  segmentation-api:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../models:/models
+    restart: unless-stopped

@@ -1,0 +1,52 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data (raw datasets not committed)
+data/*.xlsx
+data/*.xls
+data/*.csv
+!data/.gitkeep
+
+# Outputs
+output/
+!output/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env
+
+# MLflow
+mlruns/
+
+# BentoML
+bentoml/
+
+# Airflow logs
+logs/
+airflow.cfg
+unittests.cfg
+
+# Notebook exports
+*.nbconvert.ipynb

@@ -1,0 +1,14 @@
+service: "service.py:SegmentationService"
+labels:
+  owner: sunculture-ds
+  project: customer-segmentation
+include:
+  - "service.py"
+  - "../models/scaler.pkl"
+  - "../models/production/segmentation_model.pkl"
+python:
+  packages:
+    - scikit-learn>=1.6
+    - pandas>=2.2
+    - numpy>=2.1
+    - joblib>=1.3

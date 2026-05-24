@@ -1,0 +1,41 @@
+{
+  "os": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+  "python": "CPython 3.13.1",
+  "startedAt": "2026-05-24T14:27:21.306074Z",
+  "args": [
+    "-f",
+    "/private/var/folders/_s/bl8t224d74n40q3b5wtz77mw0000gn/T/tmpxxow30zj.json",
+    "--HistoryManager.hist_file=:memory:"
+  ],
+  "program": "<python with no main file>",
+  "git": {
+    "remote": "https://github.com/NjagiKevin/sunculture.git",
+    "commit": "01712f5165db9968d3c27a7bc23f123f9f33a213"
+  },
+  "email": "kevinnjagi83@gmail.com",
+  "root": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/notebooks",
+  "host": "Kevin.local",
+  "executable": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/.venv/bin/python3.13",
+  "cpu_count": 10,
+  "cpu_count_logical": 10,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "348439977984"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "apple": {
+    "name": "Apple M1 Pro",
+    "ecpuCores": 2,
+    "pcpuCores": 8,
+    "gpuCores": 14,
+    "memoryGb": 16,
+    "swapTotalBytes": "6442450944",
+    "ramTotalBytes": "17179869184",
+    "macModel": "MacBookPro18,3"
+  },
+  "writerId": "hdnp5y9qtjhgprsarzjcxx8v23xlu1bf"
+}

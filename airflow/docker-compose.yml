@@ -1,0 +1,65 @@
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file: ../.env
+  environment:
+    AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+    AIRFLOW_HOME: /opt/airflow/db
+    AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+    PYTHONPATH: /opt/airflow
+    WANDB_BASE_URL: ${WANDB_BASE_URL:-https://api.wandb.ai}
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./config:/opt/airflow/config
+    - ./db:/opt/airflow/db
+    - ../src:/opt/airflow/src
+    - ../data:/opt/airflow/data
+    - ../models:/opt/airflow/models
+    - ./logs:/opt/airflow/logs
+    - mlflow_data:/mlflow
+  depends_on:
+    - mlflow
+
+services:
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - mkdir -p /opt/airflow/db && airflow db init && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com
+    restart: no
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: airflow scheduler
+    restart: unless-stopped
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: airflow webserver
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.18.0
+    ports:
+      - "5001:5000"
+    volumes:
+      - mlflow_data:/mlflow
+    command: >
+      sh -c "mkdir -p /mlflow/artifacts && chmod -R 777 /mlflow &&
+      mlflow server --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root /mlflow/artifacts"
+
+volumes:
+  mlflow_data:

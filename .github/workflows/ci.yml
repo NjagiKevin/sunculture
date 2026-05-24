@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install .[dev]
+      - run: ruff check src/
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install .[dev]
+      - run: pip install plotly langchain langchain-openai langgraph
+      - run: python -m pytest tests/ -v
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose -f deployment/docker-compose.yml build
+
+  dag-validate:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install apache-airflow scikit-learn pandas numpy mlflow wandb python-dotenv openai openpyxl joblib pyarrow plotly "email-validator>=2.0,<3"
+      - run: python -c "import ast; ast.parse(open('airflow/dags/sunculture_retrain.py').read()); print('DAG syntax OK')"
+
+  build-pdf:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install .[dev] python-pptx
+      - run: python presentation/build_presentation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: executive-summary-pptx
+          path: presentation/Executive_Summary_SunCulture.pptx

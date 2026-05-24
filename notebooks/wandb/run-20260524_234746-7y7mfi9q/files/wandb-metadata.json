@@ -1,0 +1,38 @@
+{
+  "os": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+  "python": "CPython 3.13.1",
+  "startedAt": "2026-05-24T20:47:46.602759Z",
+  "program": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/notebooks/02_customer_segmentation.ipynb",
+  "codePath": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/notebooks/02_customer_segmentation.ipynb",
+  "codePathLocal": "02_customer_segmentation.ipynb",
+  "git": {
+    "remote": "https://github.com/NjagiKevin/sunculture.git",
+    "commit": "69e71d5b9293c79f783e461f42bbb716cc236083"
+  },
+  "email": "kevinnjagi83@gmail.com",
+  "root": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/notebooks",
+  "host": "Kevin.local",
+  "executable": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/.venv/bin/python",
+  "cpu_count": 10,
+  "cpu_count_logical": 10,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "342370582528"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "apple": {
+    "name": "Apple M1 Pro",
+    "ecpuCores": 2,
+    "pcpuCores": 8,
+    "gpuCores": 14,
+    "memoryGb": 16,
+    "swapTotalBytes": "5368709120",
+    "ramTotalBytes": "17179869184",
+    "macModel": "MacBookPro18,3"
+  },
+  "writerId": "z2v30c90rucvji6yy1hxc2t6qsd5tqsv"
+}

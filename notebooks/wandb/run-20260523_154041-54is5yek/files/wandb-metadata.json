@@ -1,0 +1,37 @@
+{
+  "os": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+  "python": "CPython 3.13.1",
+  "startedAt": "2026-05-23T12:40:41.325803Z",
+  "args": [
+    "-f",
+    "/private/var/folders/_s/bl8t224d74n40q3b5wtz77mw0000gn/T/tmpxf4brxl1.json",
+    "--HistoryManager.hist_file=:memory:"
+  ],
+  "program": "<python with no main file>",
+  "email": "kevinnjagi83@gmail.com",
+  "root": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/notebooks",
+  "host": "Kevin.local",
+  "executable": "/Users/app/Documents/NJAGI/PROJECTS/sunculture_kevinnjagi/.venv/bin/python3.13",
+  "cpu_count": 10,
+  "cpu_count_logical": 10,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "347382640640"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "apple": {
+    "name": "Apple M1 Pro",
+    "ecpuCores": 2,
+    "pcpuCores": 8,
+    "gpuCores": 14,
+    "memoryGb": 16,
+    "swapTotalBytes": "7516192768",
+    "ramTotalBytes": "17179869184",
+    "macModel": "MacBookPro18,3"
+  },
+  "writerId": "3fqzdjy439i56zjuubwzxsjtu38ec2m9"
+}
